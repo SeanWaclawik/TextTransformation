@@ -11,6 +11,9 @@ class Document {
 	// Constructor
 	Document() {
 
+		// Strip html garbage
+
+		// 
 
 
 	}
