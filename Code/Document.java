@@ -22,8 +22,7 @@ class Document {
 
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(raw));
 
-		  for (Object o : jFile)
-		  {
+		  for (Object o : jFile) {
 		    JSONObject jObject = (JSONObject) o;
 
 		    String type = (String) jObject.get("type");
