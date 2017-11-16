@@ -10,11 +10,11 @@ class Document {
 	ArrayList<String> terms;
 
 	// Constructor
-	Document() {
+	Document(String raw) {
 
-		// Strip html garbage
+		raw_text = raw;
 
-		// 
+		
 
 
 	}
@@ -35,7 +35,7 @@ class Document {
 
 	void create_json() {
 
-		
+
 	}
 
 	
