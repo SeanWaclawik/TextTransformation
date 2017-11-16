@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 class Document {
@@ -14,12 +15,15 @@ class Document {
 	// Constructor
 	Document() {
 
+		// Strip html garbage
+
+		// 
 
 
 	}
 
 
-	void remove_stop_words() {
+	void find_terms() {
 
 
 	}
@@ -30,6 +34,11 @@ class Document {
 
 	void trigrams() {
 
+	}
+
+	void create_json() {
+
+		
 	}
 
 	
