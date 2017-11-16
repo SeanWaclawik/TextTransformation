@@ -15,12 +15,9 @@ class Document {
 	
 
 	// Constructor
-	Document(String raw) {
+	Document(String fname) {
 		
-		
-		raw_text = raw;
-
-		JSONArray jFile = (JSONArray) parser.parse(new FileReader(raw));
+		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
 
 		  for (Object o : jFile) {
 		    JSONObject jObject = (JSONObject) o;
