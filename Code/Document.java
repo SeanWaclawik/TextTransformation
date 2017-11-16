@@ -8,6 +8,9 @@ class Document {
 	String strip_text;
 
 	ArrayList<String> terms;
+	ArrayList<String> bigrams;
+	ArrayList<String> trigrams;
+	
 
 	// Constructor
 	Document(String raw) {
