@@ -13,6 +13,9 @@ public class Document {
 	String type;
 	String link;
 
+	String author;
+	String titleIndex;
+
 
 	// holds the n-grams
 	private ArrayList<String> terms;
@@ -83,9 +86,52 @@ public class Document {
 
 		JSONObject out = new JSONObject();
 
+		JSONObject titleObject = new JSONObject();
+		if(type == "HTML") {
+			titleObject.put("title", name);
+			titleObject.put("indices", titleIndex);
+		}
+		out.put("title", titleObject);
 
-		JSONObject title = new JSONObject();
-		title.put("title", )
+
+		JSONObject metaObject = new JSONObject();
+		metaObject.put("author", author);
+		out.put("metadata", metaObject);
+
+
+		JSONObject ngramsObject = new JSONObject();
+
+		JSONArray ugrams = new JSONArray();
+		Iterator itr = terms.entrySet().iterator();
+		while(itr.hasNext()) {
+
+			Map.Entry pair = (Map.Entry)itr.next();
+
+			ugrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("1", ugrams);
+
+		JSONArray bgrams = new JSONArray();
+		Iterator itr = bigrams.entrySet().iterator();
+		while(itr.hasNext()) {
+
+			Map.Entry pair = (Map.Entry)itr.next();
+
+			bgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("2", bgrams);
+
+		JSONArray tgrams = new JSONArray();
+		Iterator itr = trigrams.entrySet().iterator();
+		while(itr.hasNext()) {
+
+			Map.Entry pair = (Map.Entry)itr.next();
+
+			tgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("3", tgrams);
+
+		out.put("ngrams", ngramsObject);
 
 
 
