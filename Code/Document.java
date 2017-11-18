@@ -47,6 +47,14 @@ public class Document {
 		  	}
 
 		  	strip_text = raw_text;
+		  	
+		  	// get the terms, bigrams, trigrams
+		  	find_terms();
+		  	bigrams();
+		  	trigrams();
+		  	
+		  	// make and save the results 
+		  	create_json();
 
 	}
 
@@ -96,15 +104,11 @@ public class Document {
 	}
 
 	public void bigrams() {
-
-
-
-
-
+		return;
 	}
 
 	public void trigrams() {
-
+		return;
 	}
 
 	public void create_json() {
