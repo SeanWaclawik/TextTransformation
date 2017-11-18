@@ -46,7 +46,7 @@ public class Document {
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
-			  	System.err.format("Exception occered trying to read file '%s'", stopWordsLoc);
+			  	System.err.format("Exception occurred trying to read file '%s'", stopWordsLoc);
 		  	}
 
 		  	strip_text = raw_text;
@@ -62,7 +62,7 @@ public class Document {
 		
 		
 		catch ( IOException | ParseException e) {
-			System.err.format("Exception occered trying to read input JSON file '%s'", fname);
+			System.err.format("Exception occurred trying to read input JSON file '%s'", fname);
 			e.printStackTrace();
 		}
 
@@ -81,7 +81,7 @@ public class Document {
 			return true;
 		}
 		catch (Exception e) {
-			System.err.format("Exception occered trying to read file '%s'", loc);
+			System.err.format("Exception occurred trying to read file '%s'", loc);
 			e.printStackTrace();
 		}
 		return false;
@@ -187,7 +187,7 @@ public class Document {
 			fileWriter.close();
 		}
 		catch (IOException e) {
-			System.err.format("Exception occurred trying to create json file");
+			System.err.format("Exception occurred trying to create JSON file");
 			e.printStackTrace();
 			return;
 		}
