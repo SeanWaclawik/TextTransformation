@@ -33,20 +33,21 @@ public class Document {
 
 		  for (Object o : jFile) {
 		    JSONObject jObject = (JSONObject) o;
-
 		    type = (String) jObject.get("type");
-
 		    link = (String) jObject.get("link");
-
 		    raw_text = (String) jObject.get("text");
 		  }
 		  
-		  int res = initStopWords(stopWordsLoc);  
+		  boolean res = initStopWords(stopWordsLoc);  
+		  if (!res){
+			  System.err.format("Exception occered trying to read file '%s'", loc);
+			  e.printStackTrace();
+		  }
 
 	}
 
 	// Generate the list of stop words from location defined
-	int initStopWords(String loc) {
+	boolean initStopWords(String loc) {
 		// try opening location
 		try {
 			BufferedReader reader = new BufferedReader(new fileReader(loc));
