@@ -133,6 +133,21 @@ public class Document {
 
 		out.put("ngrams", ngramsObject);
 
+		try {
+
+			String filename = name + ".json";
+			File file = new File(filename);
+			file.createNewFile();
+
+			FileWriter fileWriter = new FileWriter(file);
+			fileWriter.write(out.toJSONString());
+			fileWriter.flush();
+			fileWriter.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
 
 
 	}
