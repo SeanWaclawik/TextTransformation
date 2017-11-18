@@ -86,26 +86,45 @@ public class Document {
 		}
 		out.put("title", titleObject);
 
+
 		JSONObject metaObject = new JSONObject();
 		metaObject.put("author", author);
 		out.put("metadata", metaObject);
 
+
 		JSONObject ngramsObject = new JSONObject();
 
-		JSONArray unigrams = new JSONArray();
-		for(int i = 0; i < terms.size(); i++) {
+		JSONArray ugrams = new JSONArray();
+		Iterator itr = terms.entrySet().iterator();
+		while(itr.hasNext()) {
 
+			Map.Entry pair = (Map.Entry)itr.next();
 
-
-			
-
+			ugrams.add(pair.getKey(), pair.getValue().toArray());
 		}
+		ngramsObject.put("1", ugrams);
 
+		JSONArray bgrams = new JSONArray();
+		Iterator itr = bigrams.entrySet().iterator();
+		while(itr.hasNext()) {
 
+			Map.Entry pair = (Map.Entry)itr.next();
 
+			bgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("2", bgrams);
 
+		JSONArray tgrams = new JSONArray();
+		Iterator itr = trigrams.entrySet().iterator();
+		while(itr.hasNext()) {
 
+			Map.Entry pair = (Map.Entry)itr.next();
 
+			tgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("3", tgrams);
+
+		out.put("ngrams", ngramsObject);
 
 
 
