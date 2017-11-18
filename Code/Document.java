@@ -156,7 +156,9 @@ public class Document {
 			fileWriter.close();
 		}
 		catch (IOException e) {
+			System.err.format("Exception occurred trying to create json file");
 			e.printStackTrace();
+			return;
 		}
 
 
