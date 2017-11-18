@@ -19,7 +19,7 @@ public class Document {
 	private ArrayList<String> bigrams;
 	private ArrayList<String> trigrams;
 
-	private List<String> stops = ["a","the"]; 
+	private ArrayList<String> stops = ["a","the"]; 
 	
 
 	// Constructor
@@ -32,26 +32,33 @@ public class Document {
 		    JSONObject jObject = (JSONObject) o;
 
 		    type = (String) jObject.get("type");
-		    //System.out.println(name);
 
 		    link = (String) jObject.get("link");
-		    //System.out.println(city);
 
 		    raw_text = (String) jObject.get("text");
-		    //System.out.println(job);
 		  }
-		
-		  int res = initStopWords(stopWordsLoc);
 		  
+		  int res = initStopWords(stopWordsLoc);  
 
 	}
 
 	// Generate the list of stop words from location defined
 	int initStopWords(String loc) {
 		// try opening location
-		
-		
-		return 1;
+		try {
+			BufferedReader reader = new BufferedReader(new fileReader(loc));
+			String line;
+			while ((line = reader.readLine()) != null){
+				stops.add(line);
+			}
+			reader.close();
+			return 1;
+		}
+		catch (Exception e) {
+			System.err.format("Exception occered trying to read file '%s'", loc);
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 
