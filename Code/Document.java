@@ -164,11 +164,17 @@ public class Document {
 			return;
 		}
 
-
-
 	}
 
+	/*
+	 * External accessor methods
+	 */
 	
+	// return a copy of the text
+	public String getText(){
+		String res = new String (this.strip_text);
+		return res;
+	}
 
 
 
