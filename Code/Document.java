@@ -12,6 +12,8 @@ class Document {
 	ArrayList<String> terms;
 	ArrayList<String> bigrams;
 	ArrayList<String> trigrams;
+
+	List<String> stops = ["a","the"]; 
 	
 
 	// Constructor
@@ -34,6 +36,7 @@ class Document {
 		
 
 
+
 	}
 
 
@@ -43,6 +46,8 @@ class Document {
 	}
 
 	void bigrams() {
+
+
 
 	}
 
