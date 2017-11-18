@@ -9,9 +9,9 @@ class Document {
 	String strip_text;
 
 	// holds the n-grams
-	ArrayList<String> terms;
-	ArrayList<String> bigrams;
-	ArrayList<String> trigrams;
+	Map<String, Integer> terms;
+	Map<String, Integer> bigrams;
+	Map<String, Integer> trigrams;
 
 	List<String> stops = ["a","the"]; 
 	
@@ -41,8 +41,8 @@ class Document {
 
 
 	void find_terms() {
-
-
+	
+	
 	}
 
 	void bigrams() {
