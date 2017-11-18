@@ -18,9 +18,11 @@ public class Document {
 
 
 	// holds the n-grams
-	private ArrayList<String> terms;
-	private ArrayList<String> bigrams;
-	private ArrayList<String> trigrams;
+
+	private Map<String, Integer> terms;
+	private Map<String, Integer> bigrams;
+	private Map<String, Integer> trigrams;
+
 
 	private ArrayList<String> stops = ["a","the"]; 
 	
@@ -133,6 +135,21 @@ public class Document {
 		ngramsObject.put("3", tgrams);
 
 		out.put("ngrams", ngramsObject);
+
+		try {
+
+			String filename = name + ".json";
+			File file = new File(filename);
+			file.createNewFile();
+
+			FileWriter fileWriter = new FileWriter(file);
+			fileWriter.write(out.toJSONString());
+			fileWriter.flush();
+			fileWriter.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 
 
 
