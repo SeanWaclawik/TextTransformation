@@ -69,7 +69,14 @@ public class Document {
 
 
 	public void find_terms() {
-
+		for (int i = 0; i < strip_text.length(); i++) {
+			for (String str : stops) {
+				if (str.contains(strip_text[i])){
+					continue
+				}
+				
+			} 
+		}	
 	}
 
 	public void bigrams() {
