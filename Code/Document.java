@@ -25,7 +25,6 @@ public class Document {
 	private Map<String, ArrayList<Integer>> bigrams;
 	private Map<String, ArrayList<Integer>> trigrams;
 
-
 	private ArrayList<String> stops;
 	
 
@@ -33,9 +32,10 @@ public class Document {
 
 	Document(String fname, String stopWordsLoc) {
 		JSONParser parser = new JSONParser();
-		JSONArray jFile;
+		JSONArray jFile = new JSONArray();
 		try {
-			jFile = (JSONArray) parser.parse(new FileReader(fname));
+			Object obj = parser.parse(new FileReader(fname));
+			jFile.add(obj);
 
 		  	for (Object o : jFile) {
 		    	JSONObject jObject = (JSONObject) o;
@@ -140,33 +140,36 @@ public class Document {
 
 		JSONObject ngramsObject = new JSONObject();
 
-		JSONArray ugrams = new JSONArray();
-		Iterator itr = terms.entrySet().iterator();
+		JSONObject ugrams = new JSONObject();
+		Iterator<String> itr = terms.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)terms.get(term);
 
-			ugrams.add(pair.getKey(), pair.getValue().toArray());
+			ugrams.put(term, ind.toArray());
 		}
 		ngramsObject.put("1", ugrams);
 
-		JSONArray bgrams = new JSONArray();
-		Iterator itr = bigrams.entrySet().iterator();
+		JSONObject bgrams = new JSONObject();
+		itr = bigrams.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)bigrams.get(term);
 
-			bgrams.add(pair.getKey(), pair.getValue().toArray());
+			bgrams.put(term, ind.toArray());
 		}
 		ngramsObject.put("2", bgrams);
 
-		JSONArray tgrams = new JSONArray();
-		Iterator itr = trigrams.entrySet().iterator();
+		JSONObject tgrams = new JSONObject();
+		itr = trigrams.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)trigrams.get(term);
 
-			tgrams.add(pair.getKey(), pair.getValue().toArray());
+			tgrams.put(term, ind.toArray());
 		}
 		ngramsObject.put("3", tgrams);
 
