@@ -69,18 +69,26 @@ public class Document {
 		}
 	}
 
+	public boolean isValidWord(String word){
+		if (!word.matches("[a-zA-Z0-9]+")){
+			return false;
+		}
+		return true;
+	}
+
 	// 1-grams
 	public void find_terms() {
 		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
 		for (int i=0; i<stripped.length(); i++) {
-			 if(isValidWord(stripped[i])){
-			 	if (terms.get(stripped[i] == null)){
-			 		terms.put(stripped[i], new ArrayList<Int>());
-			 	}
-			 	terms.get(stripped[i]).add(counter);
-			 	counter++;
-			 }
+			String[] lower = stripped[i].toLowerCase()
+			if(isValidWord(lower)){
+				if (terms.get(lower == null)){
+					terms.put(lower, new ArrayList<Int>());
+				}
+				terms.get(lower).add(counter);
+				counter++;
+			}
 		}
 	}
 
