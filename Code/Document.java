@@ -24,7 +24,7 @@ public class Document {
 	private Map<String, ArrayList<Int>> trigrams;
 
 
-	private ArrayList<String> stops = ["a","the"]; 
+	private ArrayList<String> stops;
 	
 
 	// Constructor
