@@ -75,7 +75,10 @@ public class Document {
 		String[] stripped = strip_text.split("\\s+");
 		for (int i=0; i<stripped.length(); i++) {
 			 if(isValidWord(stripped[i])){
-			 	terms.put(stripped[i], counter)
+			 	if (terms.get(stripped[i] == null)){
+			 		terms.put(stripped[i], new ArrayList<Int>());
+			 	}
+			 	terms.get(stripped[i]).add(counter);
 			 	counter++;
 			 }
 		}
