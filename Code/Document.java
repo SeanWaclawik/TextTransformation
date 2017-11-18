@@ -13,6 +13,9 @@ public class Document {
 	String type;
 	String link;
 
+	String author;
+	String titleIndex;
+
 
 	// holds the n-grams
 
@@ -21,7 +24,7 @@ public class Document {
 	private HashMap<String, ArrayList<Integer>> trigrams;
 
 
-	private List<String> stops = ["a","the"]; 
+	private ArrayList<String> stops = ["a","the"]; 
 	
 
 	// Constructor
@@ -34,26 +37,33 @@ public class Document {
 		    JSONObject jObject = (JSONObject) o;
 
 		    type = (String) jObject.get("type");
-		    //System.out.println(name);
 
 		    link = (String) jObject.get("link");
-		    //System.out.println(city);
 
 		    raw_text = (String) jObject.get("text");
-		    //System.out.println(job);
 		  }
-		
-		  int res = initStopWords(stopWordsLoc);
 		  
+		  int res = initStopWords(stopWordsLoc);  
 
 	}
 
 	// Generate the list of stop words from location defined
 	int initStopWords(String loc) {
 		// try opening location
-		
-		
-		return 1;
+		try {
+			BufferedReader reader = new BufferedReader(new fileReader(loc));
+			String line;
+			while ((line = reader.readLine()) != null){
+				stops.add(line);
+			}
+			reader.close();
+			return 1;
+		}
+		catch (Exception e) {
+			System.err.format("Exception occered trying to read file '%s'", loc);
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 
@@ -80,29 +90,50 @@ public class Document {
 
 		JSONObject titleObject = new JSONObject();
 		if(type == "HTML") {
-			titleObject.put("title", title);
-			titleObject.put("indices", titleindex);
+			titleObject.put("title", name);
+			titleObject.put("indices", titleIndex);
 		}
 		out.put("title", titleObject);
+
 
 		JSONObject metaObject = new JSONObject();
 		metaObject.put("author", author);
 		out.put("metadata", metaObject);
 
+
 		JSONObject ngramsObject = new JSONObject();
 
-		JSONArray unigrams = new JSONArray();
-		for(int i = 0; i < terms.size(); i++) {
+		JSONArray ugrams = new JSONArray();
+		Iterator itr = terms.entrySet().iterator();
+		while(itr.hasNext()) {
 
-			
+			Map.Entry pair = (Map.Entry)itr.next();
 
+			ugrams.add(pair.getKey(), pair.getValue().toArray());
 		}
+		ngramsObject.put("1", ugrams);
 
+		JSONArray bgrams = new JSONArray();
+		Iterator itr = bigrams.entrySet().iterator();
+		while(itr.hasNext()) {
 
+			Map.Entry pair = (Map.Entry)itr.next();
 
+			bgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("2", bgrams);
 
+		JSONArray tgrams = new JSONArray();
+		Iterator itr = trigrams.entrySet().iterator();
+		while(itr.hasNext()) {
 
+			Map.Entry pair = (Map.Entry)itr.next();
 
+			tgrams.add(pair.getKey(), pair.getValue().toArray());
+		}
+		ngramsObject.put("3", tgrams);
+
+		out.put("ngrams", ngramsObject);
 
 
 
