@@ -5,16 +5,16 @@ import org.json.simple.*;
 
 public class Document {
 
-	// holds the jason text 
-	String raw_text;
-	String strip_text;
+	// holds the json text 
+	private String raw_text;
+	private String strip_text;
 	// holds input data from the file
-	String name;
-	String type;
-	String link;
+	private String name;
+	private String type;
+	private String link;
 
-	String author;
-	String titleIndex;
+	private String author;
+	private String titleIndex;
 
 
 	// holds the n-grams
