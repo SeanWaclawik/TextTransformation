@@ -74,7 +74,7 @@ public class Document {
 				if (str.contains(strip_text[i])){
 					continue
 				}
-				
+					
 			} 
 		}	
 	}
