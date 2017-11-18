@@ -2,22 +2,24 @@ import java.io.*;
 import java.util.*;
 import org.json.simple.*;
 
-class Document {
+public class Document {
 
 	// holds the jason text 
-	String raw_text;
-	String strip_text;
+	private String raw_text;
+	private String strip_text;
 
 	// holds the n-grams
-	Map<String, Integer> terms;
-	Map<String, Integer> bigrams;
-	Map<String, Integer> trigrams;
 
-	List<String> stops = ["a","the"]; 
+	private Map<String, Integer> terms;
+	private Map<String, Integer> bigrams;
+	private Map<String, Integer> trigrams;
+
+
+	private List<String> stops = ["a","the"]; 
 	
 
 	// Constructor
-	Document(String fname) {
+	public Document(String fname) {
 		
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
 
@@ -40,22 +42,31 @@ class Document {
 	}
 
 
-	void find_terms() {
-	
-	
-	}
-
-	void bigrams() {
-
+	public void find_terms() {
 
 
 	}
 
-	void trigrams() {
+	public void bigrams() {
+
+
+
+
 
 	}
 
-	void create_json() {
+	public void trigrams() {
+
+	}
+
+	public void create_json() {
+
+		JSONObject out = new JSONObject();
+
+
+		JSONObject title = new JSONObject();
+		title.put("title", )
+
 
 
 	}
