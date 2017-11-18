@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+
 import org.json.simple.*;
 
 class Document {
@@ -7,6 +8,11 @@ class Document {
 	// holds the jason text 
 	String raw_text;
 	String strip_text;
+	// holds input data from the file
+	String name;
+	String type;
+	String link;
+	
 
 	// holds the n-grams
 	ArrayList<String> terms;
@@ -17,26 +23,34 @@ class Document {
 	
 
 	// Constructor
-	Document(String fname) {
+	Document(String fname, String stopWordsLoc) {
 		
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
 
 		  for (Object o : jFile) {
 		    JSONObject jObject = (JSONObject) o;
 
-		    String type = (String) jObject.get("type");
+		    type = (String) jObject.get("type");
 		    //System.out.println(name);
 
-		    String link = (String) jObject.get("link");
+		    link = (String) jObject.get("link");
 		    //System.out.println(city);
 
-		    String text = (String) jObject.get("text");
+		    raw_text = (String) jObject.get("text");
 		    //System.out.println(job);
 		  }
 		
+		  int res = initStopWords(stopWordsLoc);
+		  
 
+	}
 
-
+	// Generate the list of stop words from location defined
+	int initStopWords(String loc) {
+		// try opening location
+		
+		
+		return 1;
 	}
 
 
