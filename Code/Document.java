@@ -61,9 +61,31 @@ public class Document {
 
 		JSONObject out = new JSONObject();
 
+		JSONObject titleObject = new JSONObject();
+		if(type == "HTML") {
+			titleObject.put("title", title);
+			titleObject.put("indices", titleindex);
+		}
+		out.put("title", titleObject);
 
-		JSONObject title = new JSONObject();
-		title.put("title", )
+		JSONObject metaObject = new JSONObject();
+		metaObject.put("author", author);
+		out.put("metadata", metaObject);
+
+		JSONObject ngramsObject = new JSONObject();
+
+		JSONArray unigrams = new JSONArray();
+		for(int i = 0; i < terms.size(); i++) {
+
+			
+
+		}
+
+
+
+
+
+
 
 
 
