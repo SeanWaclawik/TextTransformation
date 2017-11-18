@@ -68,7 +68,16 @@ public class Document {
 
 
 	public void find_terms() {
-
+		strip_text = raw_text.split("\\s+");
+		for (int k = 0; k < (strip_text.length); k++) {
+			String s = "";
+			int start = k;
+			int end = k+1;
+			for (int j = start; j < end; j++) {
+				s = s + "" + strip_text[j];
+			}
+			terms.put(s)
+		}
 
 	}
 
