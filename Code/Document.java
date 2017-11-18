@@ -70,7 +70,10 @@ public class Document {
 	}
 
 	public boolean isValidWord(String word){
-		if (!word.matches("[a-zA-Z0-9]+")){
+		if (!word.matches("[a-zA-Z0-9'-]+")){
+			return false;
+		}
+		if (stops.contains(word)){
 			return false;
 		}
 		return true;
@@ -79,9 +82,9 @@ public class Document {
 	// 1-grams
 	public void find_terms() {
 		int counter = 0;
-		String[] stripped = strip_text.split("\\s+");
+		String stripped = strip_text.split("\\s+");
 		for (int i=0; i<stripped.length(); i++) {
-			String[] lower = stripped[i].toLowerCase()
+			String lower = stripped[i].toLowerCase()
 			if(isValidWord(lower)){
 				if (terms.get(lower == null)){
 					terms.put(lower, new ArrayList<Int>());
