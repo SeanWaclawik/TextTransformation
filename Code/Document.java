@@ -33,18 +33,20 @@ public class Document {
 		
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
 
-		  for (Object o : jFile) {
-		    JSONObject jObject = (JSONObject) o;
-		    type = (String) jObject.get("type");
-		    link = (String) jObject.get("link");
-		    raw_text = (String) jObject.get("text");
-		  }
+		  	for (Object o : jFile) {
+		    	JSONObject jObject = (JSONObject) o;
+		    	type = (String) jObject.get("type");
+		    	link = (String) jObject.get("link");
+		    	raw_text = (String) jObject.get("text");
+		  	}
 		  
-		  boolean res = initStopWords(stopWordsLoc);  
-		  if (!res){
-			  System.err.format("Exception occered trying to read file '%s'", loc);
-			  e.printStackTrace();
-		  }
+		  	boolean res = initStopWords(stopWordsLoc);  
+		  	if (!res){
+			  	System.err.format("Exception occered trying to read file '%s'", loc);
+			  	e.printStackTrace();
+		  	}
+
+		  	strip_text = raw_text;
 
 	}
 
