@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Document {
 
@@ -19,9 +21,9 @@ public class Document {
 
 	// holds the n-grams
 
-	private Map<String, ArrayList<int>> terms;
-	private Map<String, ArrayList<int>> bigrams;
-	private Map<String, ArrayList<int>> trigrams;
+	private Map<String, ArrayList<Integer>> terms;
+	private Map<String, ArrayList<Integer>> bigrams;
+	private Map<String, ArrayList<Integer>> trigrams;
 
 
 	private ArrayList<String> stops;
@@ -30,8 +32,10 @@ public class Document {
 	// Constructor
 
 	Document(String fname, String stopWordsLoc) {
-		
-		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
+		JSONParser parser = new JSONParser();
+		JSONArray jFile;
+		try {
+			jFile = (JSONArray) parser.parse(new FileReader(fname));
 
 		  	for (Object o : jFile) {
 		    	JSONObject jObject = (JSONObject) o;
@@ -42,8 +46,7 @@ public class Document {
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
-			  	System.err.format("Exception occered trying to read file '%s'", loc);
-			  	e.printStackTrace();
+			  	System.err.format("Exception occered trying to read file '%s'", stopWordsLoc);
 		  	}
 
 		  	strip_text = raw_text;
@@ -55,6 +58,13 @@ public class Document {
 		  	
 		  	// make and save the results 
 		  	create_json();
+		}
+		
+		
+		catch ( IOException | ParseException e) {
+			System.err.format("Exception occered trying to read input JSON file '%s'", fname);
+			e.printStackTrace();
+		}
 
 	}
 
@@ -62,19 +72,19 @@ public class Document {
 	boolean initStopWords(String loc) {
 		// try opening location
 		try {
-			BufferedReader reader = new BufferedReader(new fileReader(loc));
+			BufferedReader reader = new BufferedReader(new FileReader(loc));
 			String line;
 			while ((line = reader.readLine()) != null){
 				stops.add(line);
 			}
 			reader.close();
-			return 1;
+			return true;
 		}
 		catch (Exception e) {
 			System.err.format("Exception occered trying to read file '%s'", loc);
 			e.printStackTrace();
-			return 0;
 		}
+		return false;
 	}
 
 	public boolean isValidWord(String word){
