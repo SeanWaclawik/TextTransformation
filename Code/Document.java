@@ -71,9 +71,13 @@ public class Document {
 
 	// 1-grams
 	public void find_terms() {
+		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
 		for (int i=0; i<stripped.length(); i++) {
-			 
+			 if(isValidWord(stripped[i])){
+			 	terms.put(stripped[i], counter)
+			 	counter++;
+			 }
 		}
 	}
 
