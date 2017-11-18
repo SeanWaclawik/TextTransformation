@@ -67,16 +67,12 @@ public class Document {
 		}
 	}
 
-
+	// 1-grams
 	public void find_terms() {
-		for (int i = 0; i < strip_text.length(); i++) {
-			for (String str : stops) {
-				if (str.contains(strip_text[i])){
-					continue
-				}
-					
-			} 
-		}	
+		String[] stripped = strip_text.split("\\s+");
+		for (int i=0; i<stripped.length(); i++) {
+			 
+		}
 	}
 
 	public void bigrams() {
