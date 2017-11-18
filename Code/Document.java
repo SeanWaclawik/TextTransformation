@@ -19,9 +19,9 @@ public class Document {
 
 	// holds the n-grams
 
-	private HashMap<String, ArrayList<Integer>> terms;
-	private HashMap<String, ArrayList<Integer>> bigrams;
-	private HashMap<String, ArrayList<Integer>> trigrams;
+	private Map<String, Integer> terms;
+	private Map<String, Integer> bigrams;
+	private Map<String, Integer> trigrams;
 
 
 	private ArrayList<String> stops = ["a","the"]; 
