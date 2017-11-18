@@ -13,6 +13,9 @@ public class Document {
 	String type;
 	String link;
 
+	String author;
+	String titleIndex;
+
 
 	// holds the n-grams
 	private ArrayList<String> terms;
@@ -78,8 +81,8 @@ public class Document {
 
 		JSONObject titleObject = new JSONObject();
 		if(type == "HTML") {
-			titleObject.put("title", title);
-			titleObject.put("indices", titleindex);
+			titleObject.put("title", name);
+			titleObject.put("indices", titleIndex);
 		}
 		out.put("title", titleObject);
 
@@ -91,6 +94,8 @@ public class Document {
 
 		JSONArray unigrams = new JSONArray();
 		for(int i = 0; i < terms.size(); i++) {
+
+
 
 			
 
