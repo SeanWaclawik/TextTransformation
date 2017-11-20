@@ -136,7 +136,7 @@ public class Document {
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
 		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++) {
+		for(int pos = 0; pos < terms.length - 1; pos++) {
 			String bigram = terms[pos] + " " + terms[pos + 1];
 			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])) {
 				//if the bigram exists add the new index
@@ -163,7 +163,7 @@ public class Document {
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
 		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++) {
+		for(int pos = 0; pos < terms.length - 2; pos++) {
 			String trigram = terms[pos] + " " + terms[pos + 1] + " " + terms[pos + 2];
 			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1]) 
 				&& isValidWord(terms[pos + 2])) {
