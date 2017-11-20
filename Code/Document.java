@@ -46,6 +46,10 @@ public class Document {
 		    	link = (String) jObject.get("link");
 		    	raw_text = (String) jObject.get("text");
 		  	}
+
+		  	name = fname.substring(0,fname.length() - 5);
+		  	name += ("_" + type);
+
 		  
 		  	stops = new ArrayList<String>();
 		  
