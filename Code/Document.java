@@ -1,7 +1,13 @@
 import java.io.*;
 import java.util.*;
 
+<<<<<<< HEAD
 import org.json.*;
+=======
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 public class Document {
 
@@ -19,19 +25,34 @@ public class Document {
 
 	// holds the n-grams
 
+<<<<<<< HEAD
 	private Map<String, ArrayList<Integer> > terms;
 	private Map<String, ArrayList<Integer> > bigrams;
 	private Map<String, ArrayList<Integer> > trigrams;
 
 
+=======
+	private Map<String, ArrayList<Integer>> terms;
+	private Map<String, ArrayList<Integer>> bigrams;
+	private Map<String, ArrayList<Integer>> trigrams;
+
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 	private ArrayList<String> stops;
 	
 
 	// Constructor
 
 	Document(String fname, String stopWordsLoc) {
+<<<<<<< HEAD
 		
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
+=======
+		JSONParser parser = new JSONParser();
+		JSONArray jFile = new JSONArray();
+		try {
+			Object obj = parser.parse(new FileReader(fname));
+			jFile.add(obj);
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 		  	for (Object o : jFile) {
 		    	JSONObject jObject = (JSONObject) o;
@@ -39,6 +60,7 @@ public class Document {
 		    	link = (String) jObject.get("link");
 		    	raw_text = (String) jObject.get("text");
 		  	}
+<<<<<<< HEAD
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
@@ -47,6 +69,38 @@ public class Document {
 		  	}
 
 		  	strip_text = raw_text;
+=======
+
+		  	stops = new ArrayList<String>();
+		  
+		  	boolean res = initStopWords(stopWordsLoc);  
+		  	if (!res){
+			  	System.err.format("Exception occurred trying to read file '%s'\n", stopWordsLoc);
+		  	}
+
+		  	strip_text = raw_text;
+
+		  	
+		  	terms = new HashMap<String, ArrayList<Integer>>();
+		  	bigrams = new HashMap<String, ArrayList<Integer>>();
+		  	trigrams = new HashMap<String, ArrayList<Integer>>();
+		  	
+		  	
+		  	// get the terms, bigrams, trigrams
+		  	find_terms();
+		  	bigrams();
+		  	trigrams();
+		  	
+		  	// make and save the results 
+		  	create_json();
+		}
+		
+		
+		catch ( IOException | ParseException e) {
+			System.err.format("Exception occurred trying to read input JSON file '%s'", fname);
+			e.printStackTrace();
+		}
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 	}
 
@@ -54,31 +108,48 @@ public class Document {
 	boolean initStopWords(String loc) {
 		// try opening location
 		try {
-			BufferedReader reader = new BufferedReader(new fileReader(loc));
+			BufferedReader reader = new BufferedReader(new FileReader(loc));
 			String line;
 			while ((line = reader.readLine()) != null){
 				stops.add(line);
 			}
 			reader.close();
-			return 1;
+			return true;
 		}
 		catch (Exception e) {
-			System.err.format("Exception occered trying to read file '%s'", loc);
+			System.err.format("Exception occurred trying to read file '%s'", loc);
 			e.printStackTrace();
-			return 0;
 		}
+		return false;
 	}
 
+	public boolean isValidWord(String word){
+		if (!word.matches("[a-zA-Z0-9'-]+")){
+			return false;
+		}
+		if (stops.contains(word)){
+			return false;
+		}
+		return true;
+	}
 
 	// 1-grams
 	public void find_terms() {
 		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
+<<<<<<< HEAD
 		for (int i=0; i<stripped.length(); i++) {
 			String[] lower = stripped[i].toLowerCase();
 			if(isValidWord(lower)){
 				if (terms.get(lower == null)){
 					terms.put(lower, new ArrayList<Int>());
+=======
+		for (int i=0; i<stripped.length; i++) {
+			String lower = stripped[i].toLowerCase();
+			if(isValidWord(lower)){
+				if (terms.get(lower) == null){
+					terms.put(lower, new ArrayList<Integer>());
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 				}
 				terms.get(lower).add(counter);
 				counter++;
@@ -86,6 +157,16 @@ public class Document {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public void bigrams() {
+		return;
+	}
+
+	public void trigrams() {
+		return;
+	}
+>>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 	public void create_json() {
 
@@ -106,33 +187,36 @@ public class Document {
 
 		JSONObject ngramsObject = new JSONObject();
 
-		JSONArray ugrams = new JSONArray();
-		Iterator itr = terms.entrySet().iterator();
+		JSONObject ugrams = new JSONObject();
+		Iterator<String> itr = terms.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)terms.get(term);
 
-			ugrams.add(pair.getKey(), pair.getValue().toArray());
+			ugrams.put(term, ind.toString());
 		}
 		ngramsObject.put("1", ugrams);
 
-		JSONArray bgrams = new JSONArray();
-		Iterator itr = bigrams.entrySet().iterator();
+		JSONObject bgrams = new JSONObject();
+		itr = bigrams.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)bigrams.get(term);
 
-			bgrams.add(pair.getKey(), pair.getValue().toArray());
+			bgrams.put(term, ind.toString());
 		}
 		ngramsObject.put("2", bgrams);
 
-		JSONArray tgrams = new JSONArray();
-		Iterator itr = trigrams.entrySet().iterator();
+		JSONObject tgrams = new JSONObject();
+		itr = trigrams.keySet().iterator();
 		while(itr.hasNext()) {
 
-			Map.Entry pair = (Map.Entry)itr.next();
+			String term = itr.next();
+			ArrayList<Integer> ind = (ArrayList<Integer>)trigrams.get(term);
 
-			tgrams.add(pair.getKey(), pair.getValue().toArray());
+			tgrams.put(term, ind.toString());
 		}
 		ngramsObject.put("3", tgrams);
 
@@ -150,16 +234,22 @@ public class Document {
 			fileWriter.close();
 		}
 		catch (IOException e) {
-			System.err.format("Exception occurred trying to create json file");
+			System.err.format("Exception occurred trying to create JSON file");
 			e.printStackTrace();
 			return;
 		}
 
-
-
 	}
 
+	/*
+	 * External accessor methods
+	 */
 	
+	// return a copy of the text
+	public String getText(){
+		String res = new String (this.strip_text);
+		return res;
+	}
 
 
 
