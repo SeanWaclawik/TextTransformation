@@ -1,3 +1,5 @@
+package TextTransform;
+
 import java.io.*;
 import java.util.*;
 
@@ -31,7 +33,7 @@ public class Document {
 
 	// Constructor
 
-	Document(String fname, String stopWordsLoc) {
+	public Document(String fname, String stopWordsLoc) {
 		
 		JSONParser parser = new JSONParser();
 		JSONArray jFile = new JSONArray();
