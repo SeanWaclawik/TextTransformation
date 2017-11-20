@@ -46,7 +46,7 @@ public class Document {
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
-			  	System.err.format("Exception occurred trying to read file '%s'", stopWordsLoc);
+			  	System.err.format("Exception occurred trying to read file '%s'\n", stopWordsLoc);
 		  	}
 
 		  	strip_text = raw_text;
