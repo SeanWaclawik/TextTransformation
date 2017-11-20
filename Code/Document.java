@@ -128,13 +128,6 @@ public class Document {
 		}
 	}
 
-
-	private void toLower(String[] words){
-		for(String word : words){
-			word.toLowerCase();
-		}
-	}
-
 	public void bigrams() {
 		//all terms split by space
 		String[] terms = strip_text.split("\\s+"); 
