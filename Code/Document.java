@@ -135,10 +135,12 @@ public class Document {
 		//all terms split by space
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
-		toLower(terms);
+		//toLower(terms);
 		for(int pos = 0; pos < terms.length - 1; pos++) {
-			String bigram = terms[pos] + " " + terms[pos + 1];
-			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])) {
+			String word1 = terms[pos].toLowerCase();
+			String word2 = terms[pos + 1].toLowerCase();
+			String bigram = word1 + " " + word2;
+			if(isValidWord(word1) && isValidWord(word2)) {
 				//if the bigram exists add the new index
 				if(bigrams.containsKey(bigram)) {
 					bigrams.get(bigram).add(pos);
@@ -162,11 +164,14 @@ public class Document {
 		//all terms split by space
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
-		toLower(terms);
+		//toLower(terms);
 		for(int pos = 0; pos < terms.length - 2; pos++) {
-			String trigram = terms[pos] + " " + terms[pos + 1] + " " + terms[pos + 2];
-			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1]) 
-				&& isValidWord(terms[pos + 2])) {
+			String word1 = terms[pos].toLowerCase();
+			String word2 = terms[pos + 1].toLowerCase();
+			String word3 = terms[pos + 2].toLowerCase();
+			String trigram = word1 + " " + word2 + " " + word3;
+			if(isValidWord(word1) && isValidWord(word2) 
+				&& isValidWord(word3)) {
 
 				//if trigram exists add the new index
 				if(trigrams.containsKey(trigram)) {
