@@ -40,6 +40,7 @@ public class Document {
 			Object obj = parser.parse(new FileReader(fname));
 			jFile.add(obj);
 
+			// Get information from input json file
 		  	for (Object o : jFile) {
 		    	JSONObject jObject = (JSONObject) o;
 		    	type = (String) jObject.get("type");
@@ -53,6 +54,7 @@ public class Document {
 		  
 		  	stops = new ArrayList<String>();
 		  
+		  	// pull stop words from indexer
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
 			  	System.err.format("Exception occurred trying to read file '%s'\n", stopWordsLoc);
@@ -60,7 +62,7 @@ public class Document {
 
 		  	strip_text = raw_text;
 
-		  	
+		  	// initialize search terms maps
 		  	terms = new HashMap<String, ArrayList<Integer>>();
 		  	bigrams = new HashMap<String, ArrayList<Integer>>();
 		  	trigrams = new HashMap<String, ArrayList<Integer>>();
@@ -191,6 +193,7 @@ public class Document {
 
 		JSONObject out = new JSONObject();
 
+		// title field
 		JSONObject titleObject = new JSONObject();
 		if(type == "HTML") {
 			titleObject.put("title", name);
@@ -198,14 +201,16 @@ public class Document {
 		}
 		out.put("title", titleObject);
 
-
+		// metadata field
 		JSONObject metaObject = new JSONObject();
 		metaObject.put("author", author);
 		out.put("metadata", metaObject);
 
 
+		// search terms field
 		JSONObject ngramsObject = new JSONObject();
 
+		// 1-grams
 		JSONObject ugrams = new JSONObject();
 		Iterator<String> itr = terms.keySet().iterator();
 		while(itr.hasNext()) {
@@ -217,6 +222,7 @@ public class Document {
 		}
 		ngramsObject.put("1", ugrams);
 
+		// bigrams
 		JSONObject bgrams = new JSONObject();
 		itr = bigrams.keySet().iterator();
 		while(itr.hasNext()) {
@@ -228,6 +234,7 @@ public class Document {
 		}
 		ngramsObject.put("2", bgrams);
 
+		// trigrams
 		JSONObject tgrams = new JSONObject();
 		itr = trigrams.keySet().iterator();
 		while(itr.hasNext()) {
@@ -241,6 +248,7 @@ public class Document {
 
 		out.put("ngrams", ngramsObject);
 
+		// write JSONObject to new json file
 		try {
 
 			String filename = name + ".json";
