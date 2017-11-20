@@ -1,13 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-<<<<<<< HEAD
 import org.json.*;
-=======
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 public class Document {
 
@@ -25,34 +22,24 @@ public class Document {
 
 	// holds the n-grams
 
-<<<<<<< HEAD
-	private Map<String, ArrayList<Integer> > terms;
-	private Map<String, ArrayList<Integer> > bigrams;
-	private Map<String, ArrayList<Integer> > trigrams;
-
-
-=======
 	private Map<String, ArrayList<Integer>> terms;
 	private Map<String, ArrayList<Integer>> bigrams;
 	private Map<String, ArrayList<Integer>> trigrams;
 
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 	private ArrayList<String> stops;
 	
 
 	// Constructor
 
 	Document(String fname, String stopWordsLoc) {
-<<<<<<< HEAD
 		
 		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
-=======
 		JSONParser parser = new JSONParser();
 		JSONArray jFile = new JSONArray();
+
 		try {
 			Object obj = parser.parse(new FileReader(fname));
 			jFile.add(obj);
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 		  	for (Object o : jFile) {
 		    	JSONObject jObject = (JSONObject) o;
@@ -60,7 +47,6 @@ public class Document {
 		    	link = (String) jObject.get("link");
 		    	raw_text = (String) jObject.get("text");
 		  	}
-<<<<<<< HEAD
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
@@ -69,7 +55,6 @@ public class Document {
 		  	}
 
 		  	strip_text = raw_text;
-=======
 
 		  	stops = new ArrayList<String>();
 		  
@@ -100,7 +85,6 @@ public class Document {
 			System.err.format("Exception occurred trying to read input JSON file '%s'", fname);
 			e.printStackTrace();
 		}
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 	}
 
@@ -137,19 +121,11 @@ public class Document {
 	public void find_terms() {
 		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
-<<<<<<< HEAD
 		for (int i=0; i<stripped.length(); i++) {
 			String[] lower = stripped[i].toLowerCase();
 			if(isValidWord(lower)){
 				if (terms.get(lower == null)){
 					terms.put(lower, new ArrayList<Int>());
-=======
-		for (int i=0; i<stripped.length; i++) {
-			String lower = stripped[i].toLowerCase();
-			if(isValidWord(lower)){
-				if (terms.get(lower) == null){
-					terms.put(lower, new ArrayList<Integer>());
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 				}
 				terms.get(lower).add(counter);
 				counter++;
@@ -157,16 +133,67 @@ public class Document {
 		}
 	}
 
-<<<<<<< HEAD
-=======
+
+	private void toLower(String[] words){
+		for(String word : words){
+			word.toLowerCase();
+		}
+	}
+
 	public void bigrams() {
-		return;
+		//all terms split by space
+		String[] terms = strip_text.split("\\s+"); 
+		//convert to lower case
+		toLower(terms);
+		for(int pos = 0; pos < terms.length; pos++){
+			String bigram = terms[pos] + " " + terms[pos + 1];
+			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])){
+				//if the bigram exists add the new index
+				if(bigrams.containsKey(bigram)){
+					bigrams.get(bigram).add(pos);
+				}
+				else{
+					ArrayList<Integer> positions = new ArrayList<Integer>();
+					positions.add(pos);
+					bigrams.put(bigram, positions);
+				}
+			}
+			else{
+				pos++;
+			}
+		}
+
+
+
 	}
 
 	public void trigrams() {
-		return;
+		//all terms split by space
+		String[] terms = strip_text.split("\\s+"); 
+		//convert to lower case
+		toLower(terms);
+		for(int pos = 0; pos < terms.length; pos++){
+			String trigram = terms[pos] + " " + terms[pos + 1] +
+			 " " + terms[pos + 2];
+			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1]) 
+				&& isValidWord(terms[pos + 2])){
+
+				//if trigram exists add the new index
+				if(trigrams.containsKey(trigram)){
+					trigrams.get(trigram).add(pos);
+				}
+				//create new trigram at current position
+				else{
+					ArrayList<Integer> positions = new ArrayList<Integer>();
+					positions.add(pos);
+					trigrams.put(trigram, positions);
+				}
+			}
+			else{
+				pos++;
+			}
+		}
 	}
->>>>>>> e6e617c11f7ed15accb1c2e7095e53b03dc76fd2
 
 	public void create_json() {
 
@@ -251,80 +278,6 @@ public class Document {
 		return res;
 	}
 
-
-
-
-
-
-	private void toLower(String[] words){
-		for(String word : words){
-			word.toLowerCase();
-		}
-	}
-	private boolean isValidWord(String word){
-		if(Arrays.asList(stops).contains(word)){
-			return false;
-		}
-		if(!Character.isLetterOrDigit(word[0])){
-			return false;
-		}
-	}
-
-
-	public void bigrams() {
-		//all terms split by space
-		String[] terms = strip_text.split("\\s+"); 
-		//convert to lower case
-		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++){
-			String bigram = terms[pos] + " " + terms[pos + 1];
-			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])){
-				//if the bigram exists add the new index
-				if(bigrams.containsKey(bigram)){
-					bigrams.get(bigram).add(pos);
-				}
-				else{
-					ArrayList<int> positions = new ArrayList<int>();
-					positions.add(pos);
-					bigrams.put(bigram, positions);
-				}
-			}
-			else{
-				pos++;
-			}
-		}
-
-
-
-	}
-
-	public void trigrams() {
-		//all terms split by space
-		String[] terms = strip_text.split("\\s+"); 
-		//convert to lower case
-		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++){
-			String trigram = terms[pos] + " " + terms[pos + 1] +
-			 " " + terms[pos + 2];
-			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1]) 
-				&& isValidWord(terms[pos + 2])){
-
-				//if trigram exists add the new index
-				if(trigrams.containsKey(trigram)){
-					trigrams.get(trigram).add(pos);
-				}
-				//create new trigram at current position
-				else{
-					ArrayList<int> positions = new ArrayList<int>();
-					positions.add(pos);
-					trigrams.put(trigram, positions);
-				}
-			}
-			else{
-				pos++;
-			}
-		}
-	}
 
 
 }
