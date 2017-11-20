@@ -33,7 +33,6 @@ public class Document {
 
 	Document(String fname, String stopWordsLoc) {
 		
-		JSONArray jFile = (JSONArray) parser.parse(new FileReader(fname));
 		JSONParser parser = new JSONParser();
 		JSONArray jFile = new JSONArray();
 
@@ -48,14 +47,6 @@ public class Document {
 		    	raw_text = (String) jObject.get("text");
 		  	}
 		  
-		  	boolean res = initStopWords(stopWordsLoc);  
-		  	if (!res){
-			  	System.err.format("Exception occered trying to read file '%s'", loc);
-			  	e.printStackTrace();
-		  	}
-
-		  	strip_text = raw_text;
-
 		  	stops = new ArrayList<String>();
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
@@ -121,11 +112,11 @@ public class Document {
 	public void find_terms() {
 		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
-		for (int i=0; i<stripped.length(); i++) {
-			String[] lower = stripped[i].toLowerCase();
+		for (int i = 0; i < stripped.length; i++) {
+			String lower = stripped[i].toLowerCase();
 			if(isValidWord(lower)){
-				if (terms.get(lower == null)){
-					terms.put(lower, new ArrayList<Int>());
+				if (terms.get(lower) == null){
+					terms.put(lower, new ArrayList<Integer>());
 				}
 				terms.get(lower).add(counter);
 				counter++;
@@ -145,20 +136,20 @@ public class Document {
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
 		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++){
+		for(int pos = 0; pos < terms.length; pos++) {
 			String bigram = terms[pos] + " " + terms[pos + 1];
-			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])){
+			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1])) {
 				//if the bigram exists add the new index
-				if(bigrams.containsKey(bigram)){
+				if(bigrams.containsKey(bigram)) {
 					bigrams.get(bigram).add(pos);
 				}
-				else{
+				else {
 					ArrayList<Integer> positions = new ArrayList<Integer>();
 					positions.add(pos);
 					bigrams.put(bigram, positions);
 				}
 			}
-			else{
+			else {
 				pos++;
 			}
 		}
@@ -172,24 +163,23 @@ public class Document {
 		String[] terms = strip_text.split("\\s+"); 
 		//convert to lower case
 		toLower(terms);
-		for(int pos = 0; pos < terms.length; pos++){
-			String trigram = terms[pos] + " " + terms[pos + 1] +
-			 " " + terms[pos + 2];
+		for(int pos = 0; pos < terms.length; pos++) {
+			String trigram = terms[pos] + " " + terms[pos + 1] + " " + terms[pos + 2];
 			if(isValidWord(terms[pos]) && isValidWord(terms[pos + 1]) 
-				&& isValidWord(terms[pos + 2])){
+				&& isValidWord(terms[pos + 2])) {
 
 				//if trigram exists add the new index
-				if(trigrams.containsKey(trigram)){
+				if(trigrams.containsKey(trigram)) {
 					trigrams.get(trigram).add(pos);
 				}
 				//create new trigram at current position
-				else{
+				else {
 					ArrayList<Integer> positions = new ArrayList<Integer>();
 					positions.add(pos);
 					trigrams.put(trigram, positions);
 				}
 			}
-			else{
+			else {
 				pos++;
 			}
 		}
