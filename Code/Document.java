@@ -155,7 +155,7 @@ public class Document {
 			String term = itr.next();
 			ArrayList<Integer> ind = (ArrayList<Integer>)terms.get(term);
 
-			ugrams.put(term, ind.toArray());
+			ugrams.put(term, ind.toString());
 		}
 		ngramsObject.put("1", ugrams);
 
@@ -166,7 +166,7 @@ public class Document {
 			String term = itr.next();
 			ArrayList<Integer> ind = (ArrayList<Integer>)bigrams.get(term);
 
-			bgrams.put(term, ind.toArray());
+			bgrams.put(term, ind.toString());
 		}
 		ngramsObject.put("2", bgrams);
 
@@ -177,7 +177,7 @@ public class Document {
 			String term = itr.next();
 			ArrayList<Integer> ind = (ArrayList<Integer>)trigrams.get(term);
 
-			tgrams.put(term, ind.toArray());
+			tgrams.put(term, ind.toString());
 		}
 		ngramsObject.put("3", tgrams);
 
