@@ -1,6 +1,6 @@
-import java.io.*;
-import java.util.*;
-import org.json.simple.*;
+package TextTransform;
+
+import java.io.IOException;
 
 class TextTransform {
 
