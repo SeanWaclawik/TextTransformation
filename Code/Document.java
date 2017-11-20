@@ -43,6 +43,8 @@ public class Document {
 		    	link = (String) jObject.get("link");
 		    	raw_text = (String) jObject.get("text");
 		  	}
+
+		  	stops = new ArrayList<String>();
 		  
 		  	boolean res = initStopWords(stopWordsLoc);  
 		  	if (!res){
@@ -50,6 +52,12 @@ public class Document {
 		  	}
 
 		  	strip_text = raw_text;
+
+		  	
+		  	terms = new HashMap<String, ArrayList<Integer>>();
+		  	bigrams = new HashMap<String, ArrayList<Integer>>();
+		  	trigrams = new HashMap<String, ArrayList<Integer>>();
+		  	
 		  	
 		  	// get the terms, bigrams, trigrams
 		  	find_terms();
