@@ -23,10 +23,11 @@ public class DocumentUnitTest {
 	@Test
 	public void testDocument() {
 		Document doc = new Document(fname, stopWordsLoc);
-		String expectedText = new String("Hello World Book\nbanana\n\napple bub");
+		String expectedText = new String("Hello World Book\nbanana\n\napple bub\n");
 		
 		if (doc!=null){
 			if(!doc.getText().equals(expectedText)){
+				System.out.printf("got: '%s'\nExpected:'%s'", doc.getText(), expectedText);
 				fail("testDocument: Failed to produce expected text");
 			}
 		}
