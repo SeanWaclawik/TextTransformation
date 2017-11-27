@@ -282,19 +282,19 @@ public class Document {
 
 	// return a copy of 1-grams
 	public Set<String> getTerms() {
-		Set<String> res = new Set(this.terms.keySet());
+		Set<String> res = new HashSet(this.terms.keySet());
 		return res;
 	}
 
 	// return a copy of 2-grams
 	public Set<String> getBigrams() {
-		Set<String> res = new Set(this.bigrams.keySet());
+		Set<String> res = new HashSet(this.bigrams.keySet());
 		return res;
 	}	
 
 	// return a copy of 3-grams
 	public Set<String> getTrigrams() {
-		Set<String> res = new Set(this.trigrams.keySet());
+		Set<String> res = new HashSet(this.trigrams.keySet());
 		return res;
 	}	
 

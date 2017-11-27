@@ -95,12 +95,36 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testGetText() {
-		fail("Not yet implemented");
+		String expectedText = new String("Hello World Book\nbanana\n\napple bub\n");
+		
+		if (uniDoc!=null){
+			if(!uniDoc.getText().equals(expectedText)){
+				System.out.printf("got: '%s'\nExpected:'%s'", uniDoc.getText(), expectedText);
+				fail("testGetText: Failed to get expected text");
+			}
+		}
+		else{
+			fail("testGetText: no universal object");
+		}
 	}
 
 	@Test 
 	public void testGetStops() {
-		fail("Not yet implemented");
+		ArrayList<String> res = new ArrayList<String>();
+		res = uniDoc.getStops();
+		
+		if (res != null){
+			if (res.size() != 1){
+				fail("testGetStops: stop words size is incorrect");
+			}
+			if (!res.get(0).contains("apple")){
+				System.out.printf("expected: 'apple' got : %s", res.get(0));
+				fail("testGetStops: stop words list is incorrect");
+			}
+		}
+		else {
+			fail("testGetStops: could not get stop words");
+		}
 	}
 
 }
