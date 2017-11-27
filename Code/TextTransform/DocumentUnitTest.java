@@ -74,4 +74,9 @@ public class DocumentUnitTest {
 		fail("Not yet implemented");
 	}
 
+	@Test 
+	public void testGetStops() {
+		fail("Not yet implemented");
+	}
+
 }
