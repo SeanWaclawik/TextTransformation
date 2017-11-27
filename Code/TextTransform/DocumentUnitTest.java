@@ -61,18 +61,30 @@ public class DocumentUnitTest {
 				fail("testFind_terms: Incorrect 1-grams");
 			}
 		}
-
-
 	}
 
 	@Test
 	public void testBigrams() {
-		fail("Not yet implemented");
+		ArrayList<String> expected = new ArrayList<String>(Arrays.asList("book banana", "world book", "hello world"));
+		Set<String> res = uniDoc.getBigrams();
+
+		for(int i = 0; i < expected.size(); i++) {
+			if(!res.contains(expected.get(i))) {
+				fail("testFind_terms: Incorrect 2-grams");
+			}
+		}
 	}
 
 	@Test
 	public void testTrigrams() {
-		fail("Not yet implemented");
+		ArrayList<String> expected = new ArrayList<String>(Arrays.asList("world book banana", "hello world book"));
+		Set<String> res = uniDoc.getTrigrams();
+
+		for(int i = 0; i < expected.size(); i++) {
+			if(!res.contains(expected.get(i))) {
+				fail("testFind_terms: Incorrect 3-grams");
+			}
+		}
 	}
 
 	@Test
