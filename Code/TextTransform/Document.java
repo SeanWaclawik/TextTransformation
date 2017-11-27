@@ -280,6 +280,24 @@ public class Document {
 		return res;
 	}
 
+	// return a copy of 1-grams
+	public Set<String> getTerms() {
+		Set<String> res = new Set(this.terms.getKeys());
+		return res;
+	}
+
+	// return a copy of 2-grams
+	public Set<String> getBigrams() {
+		Set<String> res = new Set(this.bigrams.getKeys());
+		return res;
+	}	
+
+	// return a copy of 3-grams
+	public Set<String> getTrigrams() {
+		Set<String> res = new Set(this.trigrams.getKeys());
+		return res;
+	}	
+
 	// return a copy of stop words
 	public ArrayList<String> getStops() {
 		ArrayList<String> res = new ArrayList<String>(this.stops);
