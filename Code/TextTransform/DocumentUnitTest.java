@@ -35,7 +35,13 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testInitStopWords() {
-		fail("Not yet implemented");
+		Document doc = new Document(fname, stopWordsLoc);
+		ArrayList<String> expected  = new ArrayList<String>(Arrays.asList("apple"));
+		ArrayList<String> res = doc.getStops();
+
+		if(!(expected.get(0).equals(res.get(0))) {
+			fail("testInitStopWords: Incorrect stop words");
+		}
 	}
 
 	@Test

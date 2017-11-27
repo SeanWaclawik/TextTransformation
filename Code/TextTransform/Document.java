@@ -280,6 +280,12 @@ public class Document {
 		return res;
 	}
 
+	// return a copy of stop words
+	public ArrayList<String> getStops() {
+		ArrayList<String> res = new ArrayList<String>(this.stops);
+		return res;
+	}
+
 
 
 }
