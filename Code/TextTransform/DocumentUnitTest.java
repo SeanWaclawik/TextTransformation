@@ -52,7 +52,16 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testFind_terms() {
-		fail("Not yet implemented");
+		ArrayList<String> expected = new ArrayList<String>(Arrays.asList("hello","world","book","banana","bub"));
+		Set<String> res = uniDoc.getTerms();
+
+		for(int i = 0; i < expected.size(); i++) {
+			if(!res.contains(expected.get(i))) {
+				fail("testFind_terms: Incorrect 1-grams");
+			}
+		}
+
+
 	}
 
 	@Test
