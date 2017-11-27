@@ -2,6 +2,8 @@ package TextTransform;
 
 import static org.junit.Assert.*;
 
+import java.util.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +41,7 @@ public class DocumentUnitTest {
 		ArrayList<String> expected  = new ArrayList<String>(Arrays.asList("apple"));
 		ArrayList<String> res = doc.getStops();
 
-		if(!(expected.get(0).equals(res.get(0))) {
+		if(!(expected.get(0).equals(res.get(0)))) {
 			fail("testInitStopWords: Incorrect stop words");
 		}
 	}
