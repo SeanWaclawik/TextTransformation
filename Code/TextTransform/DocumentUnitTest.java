@@ -37,9 +37,8 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testInitStopWords() {
-		Document doc = new Document(fname, stopWordsLoc);
 		ArrayList<String> expected  = new ArrayList<String>(Arrays.asList("apple"));
-		ArrayList<String> res = doc.getStops();
+		ArrayList<String> res = uniDoc.getStops();
 
 		if(!(expected.get(0).equals(res.get(0)))) {
 			fail("testInitStopWords: Incorrect stop words");
@@ -69,10 +68,16 @@ public class DocumentUnitTest {
 	@Test
 	public void testCreate_json() {
 		fail("Not yet implemented");
+
 	}
 
 	@Test
 	public void testGetText() {
+		fail("Not yet implemented");
+	}
+
+	@Test 
+	public void testGetStops() {
 		fail("Not yet implemented");
 	}
 
