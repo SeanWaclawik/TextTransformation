@@ -48,7 +48,12 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testIsValidWord() {
-		fail("Not yet implemented");
+		ArrayList<String> expectedFails = new ArrayList<String>(Arrays.asList("apple", "<>", "$%^&"));
+		for (int i = 0; i < expectedFails.size(); i++){
+			if (uniDoc.isValidWord(expectedFails.get(i))) {
+				fail("testIsValidWord: Incorrect word validity");
+			}
+		}
 	}
 
 	@Test
