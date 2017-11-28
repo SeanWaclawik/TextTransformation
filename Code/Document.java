@@ -103,9 +103,11 @@ public class Document {
 	}
 
 	public boolean isValidWord(String word){
+		// Regex for alphaanumeric with dashes and apostrophes allowed
 		if (!word.matches("[a-zA-Z0-9'-]+")){
 			return false;
 		}
+		// If the word is within the 50 most common words from indexing
 		if (stops.contains(word)){
 			return false;
 		}
@@ -116,12 +118,15 @@ public class Document {
 	public void find_terms() {
 		int counter = 0;
 		String[] stripped = strip_text.split("\\s+");
+		// Go through everything separated by whitespace
 		for (int i = 0; i < stripped.length; i++) {
 			String lower = stripped[i].toLowerCase();
 			if(isValidWord(lower)){
 				if (terms.get(lower) == null){
+					// Create new ArrayList for corresponding key
 					terms.put(lower, new ArrayList<Integer>());
 				}
+				// Add to the ArrayList values
 				terms.get(lower).add(counter);
 				counter++;
 			}
