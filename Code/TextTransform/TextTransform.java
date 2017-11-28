@@ -1,6 +1,6 @@
-import java.io.*;
-import java.util.*;
-import org.json.simple.*;
+package TextTransform;
+
+import java.io.IOException;
 
 class TextTransform {
 
@@ -10,7 +10,7 @@ class TextTransform {
 		}
 		
 		String fileLocation = args[0];
-		String stopWordsFile = args[1];
+		String stopWordsFile = args[1]; // Replace with location of stop words files
 		
 		Document doc = new Document(fileLocation, stopWordsFile);
 		
