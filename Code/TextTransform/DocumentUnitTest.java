@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
+
+import org.json.*;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -100,7 +106,36 @@ public class DocumentUnitTest {
 
 	@Test
 	public void testCreate_json() {
-		fail("Not yet implemented");
+		uniDoc.create_json();
+		try{
+			InputStream is = JsonParsing.class.getResourceAsStream( uniDoc.getName());
+		}
+		catch(IOException e)
+		{
+			fail("Cannot open file to read");
+		}
+        String jsonTxt = IOUtils.toString( is );
+
+        JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );    
+        if(!json.has("title")){
+        	fail("Missing title");
+        }
+        if(!json.has("indices")){
+        	fail("Missing indices");
+        }
+        if(!json.has("author")){
+        	fail("Missing author");
+        }       
+        if(!json.has("metadata")){
+        	fail("Missing metadata");
+        }                 
+        if(!json.has("ngrams")){
+        	fail("Missing ngrams");
+        }
+
+
+
+		//fail("Not yet implemented");
 
 	}
 

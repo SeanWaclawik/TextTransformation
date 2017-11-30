@@ -309,6 +309,10 @@ public class Document {
 		return res;
 	}
 
+	public String getName(){
+		String res = new String(this.name);
+		return res;
+	}
 
 
 }
