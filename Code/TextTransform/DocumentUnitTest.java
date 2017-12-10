@@ -9,6 +9,7 @@ import org.json.*;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.json.Object;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -117,19 +118,19 @@ public class DocumentUnitTest {
         String jsonTxt = IOUtils.toString( is );
 
         JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );    
-        if(!json.has("title")){
+        if(!json.isNull("title")){
         	fail("Missing title");
         }
-        if(!json.has("indices")){
+        if(!json.isNull("indices")){
         	fail("Missing indices");
         }
-        if(!json.has("author")){
+        if(!json.isNull("author")){
         	fail("Missing author");
         }       
-        if(!json.has("metadata")){
+        if(!json.isNull("metadata")){
         	fail("Missing metadata");
         }                 
-        if(!json.has("ngrams")){
+        if(!json.isNull("ngrams")){
         	fail("Missing ngrams");
         }
 
