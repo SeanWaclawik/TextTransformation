@@ -51,9 +51,7 @@ public class Document {
 		  	}
 
 		  	name = fname.substring(0,fname.length() - 5);
-		  	name += ("_" + type);
-
-		  
+		  	name += ("_" + type);	  
 		  	stops = new ArrayList<String>();
 		  
 		  	// pull stop words from indexer
@@ -157,9 +155,9 @@ public class Document {
 					bigrams.put(bigram, positions);
 				}
 			}
-			else {
-				pos++;
-			}
+			// else {
+			// 	pos++;
+			// }
 		}
 
 
@@ -190,9 +188,9 @@ public class Document {
 					trigrams.put(trigram, positions);
 				}
 			}
-			else {
-				pos++;
-			}
+			// else {
+			// 	pos++;
+			// }
 		}
 	}
 
