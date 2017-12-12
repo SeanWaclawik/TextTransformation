@@ -1,0 +1,38 @@
+{
+"metadata":{"author":null},
+"ngrams":{
+	"1":{"big":"[89]","projects":"[91]","software":"[90]","tested":"[56]","your":"[57, 59, 64]","hypertextual":"[113]","colleft":"[133]","you":"[52]","solid":"[144]",
+	"in":"[62]","work":"[60]","testing":"[10]","is":"[39]","-":"[6, 11, 14, 16]","exam":"[70, 120]","1":"[66, 69]","fail":"[92]","2":"[67, 71, 73]","at":"[27]","3":"[72]",
+	"colright":"[158]","yellowbox":"[155]","browse":"[47]","bluebox":"[81]","anatomy":"[109]","our":"[40]","carnegie":"[22]","computer":"[26]","search":"[115]","gray":"[105]",
+	"fall":"[12]","web":"[114]","by":"[106, 116]","wed":"[142]","have":"[53]","course":"[43]","dorian":"[101, 104]","after":"[51]","brin":"[117]","a":"[111]","rcs":"[65]",
+	"middle":"[98]","myths":"[95]","banner2":"[30]","picture":"[99, 102]","banner1":"[32]","the":"[42, 97]","greenbox1":"[128]","greenbox3":"[124]","hide":"[138]",
+	"greenbox2":"[126]","answer":"[49]","lhs":"[83, 132]","ask":"[46]","to":"[45]","li":"[145]","syllabus":"[35]","notes":"[84, 85, 86, 87, 88, 93, 94, 108, 121, 122]",
+	"toploc":"[24]","eaton":"[140]","office":"[141]","contact":"[135, 139]","implemented":"[54]","bluebox1":"[79]","bluebox2":"[77]","html":"[0]","bluebox3":"[75]",
+	"talk":"[119]","programming":"[8, 20]","all":"[160]","test":"[68]","contactinfo":"[147]","large-scale":"[7, 19, 112]","updated":"[36, 38]","here":"[44]",
+	"yellowbox2":"[151]","some":"[50]","yellowbox1":"[153]","submit":"[58]","yellowbox3":"[149]","for":"[41]","show":"[134]","emily":"[107]","greenbox":"[130]","public":"[1]",
+	"and":"[9, 21, 55, 118]","of":"[25, 96, 100, 103, 110]","6963":"[5]","end":"[23, 29, 31, 33, 74, 76, 78, 80, 82, 123, 125, 127, 129, 131, 136, 146, 148, 150, 152, 154, 156, 159]",
+	"david":"[15, 17]","on":"[61]","answered":"[48]","polytechnic":"[28]","banner":"[34]","contactinfoteaser":"[137]","xhtml":"[2]","schedule":"[37]","with":"[63]",
+	"2017":"[13]","csci":"[3, 4, 18]","1px":"[143]","rhs":"[157]"},
+
+	"2":{"submit your":"[263]","end greenbox1":"[1306]","end greenbox2":"[1302]","end greenbox3":"[1298]","- david":"[86, 92]","- large-scale":"[18]",
+	"end contactinfoteaser":"[1345]","of computer":"[163]","programming and":"[20, 136]","and testing":"[21]","implemented and":"[258]","the middle":"[997]",
+	"picture of":"[1007, 1018]","browse answered":"[245]","by brin":"[1067]","projects fail":"[927]","tested your":"[260]","end bluebox1":"[804]","you have":"[256]",
+	"end bluebox3":"[796]","end bluebox2":"[800]","hypertextual web":"[1063]","end rhs":"[1461]","a large-scale":"[1061]","brin and":"[1068]","html public":"[1]",
+	"work on":"[265]","end lhs":"[812, 1314]","end yellowbox":"[1457]","6963 -":"[17]","- fall":"[24]","end contactinfo":"[1441]","fall 2017":"[25]","and tested":"[259]",
+	"large-scale programming":"[19, 135]","of dorian":"[1008, 1019]","with your":"[275]","of the":"[996]","is our":"[228]","show contact":"[1340]","hide contact":"[1356]",
+	"end all":"[1468]","to ask":"[242]","your rcs":"[276]","big software":"[925]","end toploc":"[147]","exam 2":"[757]","dorian gray":"[1020]","end banner1":"[180]",
+	"end bluebox":"[808]","end banner2":"[176]","myths of":"[995]","end greenbox":"[1310]","software projects":"[926]","end yellowbox1":"[1453]","anatomy of":"[1059]",
+	"the course":"[238]","answer some":"[248]","end yellowbox3":"[1445]","end yellowbox2":"[1449]","for the":"[237]","by emily":"[1038]","1px solid":"[1388]",
+	"your work":"[264]","have implemented":"[257]","of a":"[1060]","web search":"[1064]","end banner":"[184]","after you":"[255]","csci 6963":"[16]","here to":"[241]",
+	"large-scale hypertextual":"[1062]","in with":"[274]"},
+
+	"3":{"by brin and":"[1067]","implemented and tested":"[258]","myths of the":"[995]","hypertextual web search":"[1063]","with your rcs":"[275]",
+	"- large-scale programming":"[18]","- fall 2017":"[24]","programming and testing":"[20]","you have implemented":"[256]","and tested your":"[259]","of dorian gray":"[1019]",
+	"software projects fail":"[926]","in with your":"[274]","your work on":"[264]","anatomy of a":"[1059]","of the middle":"[996]","after you have":"[255]",
+	"here to ask":"[241]","6963 - large-scale":"[17]","large-scale programming and":"[19, 135]","large-scale hypertextual web":"[1062]","picture of dorian":"[1007, 1018]",
+	"big software projects":"[925]","of a large-scale":"[1060]","for the course":"[237]","submit your work":"[263]","csci 6963 -":"[16]","have implemented and":"[257]",
+	"a large-scale hypertextual":"[1061]"}
+	
+},
+"title":{}
+}

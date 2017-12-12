@@ -3,16 +3,16 @@
 	"link":"example3.org/testInput3.json",
 	"text":"<html>
   <head>
-    <title>Welcome to the website!</title>
+    <title> Welcome to the website </title>
   </head>
   
   <body>
-    <p>This is a paragraph.</p>
-    <p>This is another paragraph.</p>
+    <p> This is a paragraph </p>
+    <p> This is another paragraph </p>
 
-    <a href="website.com">This is a link</a>
+    <a href=\"website.com\"> This is a link </a>
 
-    <img src="img.jpg" alt="image" width="104" height="142">
+    <img src=\"img.jpg\" alt=\"image\" width=\"104\" height=\"142\">
 
     <garbagehtml>      </garbagehtml>
   </body>

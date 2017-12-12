@@ -1,0 +1,9 @@
+{
+"metadata":{"author":null},
+"ngrams":{
+	"1":{"banana":"[3]","world":"[1]","book":"[2]","hello":"[0]","bub":"[4]"},
+	"2":{"book banana":"[2]","hello world":"[0]","world book":"[1]"},
+	"3":{"hello world book":"[0]","world book banana":"[1]"}
+},
+"title":{}
+}
