@@ -14,7 +14,7 @@ class TextTransform {
 		
 		Document doc = new Document(fileLocation, stopWordsFile);
 		
-		System.out.print(doc.getText());
+		//System.out.print(doc.getText());
 	}
 
 }
